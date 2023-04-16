@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './style/Detail.css'
 import Youtube from 'react-youtube';
 import Discover from './components/Discover';
 
 export default function Detail() {
 
-    // FETCH MOVIES DETAILS
     const location = useLocation();
     const movieID = location.state.movie.id;
+
+    // FETCH MOVIES DETAILS
     const [movielist, setMovielist] = useState([]);
     const fetchmoviedetails = async (id) => {
         const API_URL_DET = `https://api.themoviedb.org/3/movie/${id}?api_key=dc6c9756c455e1b3b3f8d3b91062b234&append_to_response=videos`
@@ -20,10 +21,10 @@ export default function Detail() {
         fetchmoviedetails(movieID)
     }, [])
 
-    // FETCH SIMILAR MOVIES
+    // FETCH RECOMMENDED MOVIES
     const [simMovies, setSimmovies] = useState([]);
     const fetchSimilar = async (id) => {
-        const API_URL_SIM = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=dc6c9756c455e1b3b3f8d3b91062b234&language=en-US&page=1`
+        const API_URL_SIM = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=dc6c9756c455e1b3b3f8d3b91062b234&language=en&page=1`
         const sim_res = await fetch(API_URL_SIM);
         const sim_res_json = await sim_res.json();
         if (sim_res_json.results !== null) {
@@ -67,36 +68,50 @@ export default function Detail() {
     })
 
     const renderTrailer = () => {
-        if (movielist.videos.results.length > 0) {
+        // console.log(movielist.videos);
+        if (movielist.videos?.results.length > 0) {
             console.log(movielist.videos.results.length);
             const trailer = movielist.videos.results.find(vid => vid.name.includes('Official') || vid.name.includes('official') || vid.name.includes('Trailer') || vid.name.includes('trailer'));
             console.log(trailer);
-            return (
-                <div key={trailer.id}>
-                    <Youtube
-                        videoId={trailer.key}
-                    />
-                </div>
-            )
+            if (trailer != undefined) {
+                return (
+                    <div key={trailer.id}>
+                        <Youtube
+                            videoId={trailer.key}
+                        />
+                    </div>
+                )
+            } else {
+                return 'No Trailer available'
+            }
+
         } else {
             return 'No Trailers or Teasers Available';
         }
     }
 
-
+    const navigation = useNavigate();
+    const handleClick = () => {
+        navigation('/home');
+    }
 
 
     return (
         <div className='detail-cont'>
             <div className='intro' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${movielist.backdrop_path})` }}>
                 <div className='info-cont'>
-                    <div>
-                        <h1>{movielist.title}</h1>
-                        <div style={{ paddingTop: '2vh' }}>{year}</div>
+                    <div className='detailed-info'>
+                        <div>
+                            <h1>{movielist.title}</h1>
+                            <div style={{ paddingTop: '2vh' }}>{year}</div>
+                        </div>
+                        <div className='vote-cont'>
+                            Average Votes
+                            <div className='vote-avg' style={{ fontWeight: 'bold' }}>{movielist.vote_average}</div>
+                        </div>
                     </div>
-                    <div className='vote-cont'>
-                        Average Votes
-                        <div className='vote-avg' style={{ fontWeight: 'bold' }}>{movielist.vote_average}</div>
+                    <div style={{padding:'6vh'}}>
+                        <button className='btn-home' onClick={handleClick}>◀ Back to Home</button>
                     </div>
                 </div>
 
@@ -126,7 +141,7 @@ export default function Detail() {
                 <div className='prod-list'>{list1}</div>
             </div>
             <div className='similar-cont'>
-                <Discover movieslist={simMovies} heading={'Recommended Movies'} />
+                <Discover movieslist={simMovies} heading={'Recommended'} />
             </div>
         </div>
     )
