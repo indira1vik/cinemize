@@ -9,9 +9,9 @@ function App() {
     <div className="app-cont">
       <BrowserRouter basename="/cinemize">
         <Routes>
-          <Route exact path="/" element={<Splash />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route exact path="/cinemize" element={<Splash />} />
+          <Route path="/cinemize/home" element={<Home />} />
+          <Route path="/cinemize/detail" element={<Detail />} />
         </Routes>
       </BrowserRouter>
     </div>
