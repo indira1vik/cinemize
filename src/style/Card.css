@@ -1,0 +1,10 @@
+.movie-card img{
+    object-fit: cover;
+    border: 1px solid white;
+    height: 60vh;
+    width: 20vw;
+    border-radius: 2vh;
+}
+.movie-card:hover{
+    cursor: pointer;
+}

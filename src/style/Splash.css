@@ -1,0 +1,36 @@
+.spl-cont{
+    background-image: url('../images/Wallpaper.png');
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.header-spl{
+    width: fit-content;
+    padding-left: 12vh;
+    padding-top: 12vh;
+}
+.footer-spl{
+    padding-left: 12vh;
+    padding-bottom: 12vh;
+}
+.footer-spl ul{
+    list-style: none;
+    display: flex;
+    gap: 4vh;
+    margin: 0;
+    padding: 0;
+}
+.footer-spl a{
+    text-decoration: none;
+    color: white;
+}
+.title{
+    font-size: 12vh;
+    font-weight: 600;
+}
+.tagline{
+    font-size: 4vh;
+    float: right;
+}
