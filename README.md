@@ -4,7 +4,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About this web application
 
-This web application is about movies, where we can search movies and get a detailed view of the movie. Also, if the movie's trailers are available, we can watch them and provide the best user experience possible with the good UI design. \
+This web application is about movies, where we can search movies and get a detailed view of the movie. Also, if the movie's trailers are available, we can watch them and provide the best user experience possible with the good UI design.\
+
+### `ScreenShots...`
+
+![image](https://user-images.githubusercontent.com/90179632/232978482-42362002-11db-425a-80b0-6b31e2205a0a.png)
+![image](https://user-images.githubusercontent.com/90179632/232978598-c59b01f8-34e0-4bbf-bd8a-244669ab560f.png)
+
 
 ## Available Scripts
 
