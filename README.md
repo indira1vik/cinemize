@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Please have a look into this website [Cinemize - the popcorn time](https://indira1vik.github.io/cinemize/).
+
 ## About this web application
 
 This web application is about movies, where we can search movies and get a detailed view of the movie. Also, if the movie's trailers are available, we can watch them and provide the best user experience possible with the good UI design.\
