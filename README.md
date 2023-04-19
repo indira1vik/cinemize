@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Please have a look into this website ### `[Cinemize - the popcorn time](https://indira1vik.github.io/cinemize/).`
+Please have a look into this website [Cinemize - the popcorn time](https://indira1vik.github.io/cinemize/).
 
 ## About this web application
 
